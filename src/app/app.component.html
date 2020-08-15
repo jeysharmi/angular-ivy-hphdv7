@@ -1,0 +1,38 @@
+
+  <hello name="{{ name }}"></hello>
+  <p style="font-style:italic">
+    Check out your favorite cities weather with an auto update for every 30 seconds!!!
+  </p>
+  <!-- card begins -->
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor="let d of gridCol; let i=index"> 
+      <div class="card bg-dark text-white"  style="width: 27rem;">
+        <img src="{{d.image}}" class="card-img" alt="...">  
+        <div class="card-img-overlay" (click)="addsearch(i)" *ngIf="d.isEmpty"></div>        
+        <!-- card over lay begins -->
+        <div class="card-img-overlay"  *ngIf="!d.isEmpty">
+          <div *ngIf="!d.isEmpty && !d.isData">
+            <h5 class="card-title">Search City</h5>
+            <input type="text" placeholder="Enter City Name Here"  [(ngModel)]="d.city"/>       
+            <button id="btn" (click)="getWeather(d,i)" >Get Weather</button>       
+          </div>          
+          <div  id="divWeatherMain" *ngIf="d.isData">  
+              <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{d.data.temp_celcius}}°</div>
+              <div class="weatherWidgetRow" style="font-size: 12px;">{{d.data.temp_min}}° / {{d.data.temp_max}}°</div>
+              <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{d.data.temp_feels_like}}°</div>
+              <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{d.data.name}}</div>
+              <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{d.data.main.humidity}}%</div>
+          </div>
+          <div *ngIf="!d.isEdit && d.message != null && d.message != undefined && d.message != ''" style="color:red;">
+            <b>Information of current city was not available. Please refer to the error message below.</b> 
+            <br>
+            <b>Message:</b> {{d.message}}          
+          </div>
+          <button id="editbtn" (click)="editWeather(d,i)" *ngIf="d.isData">Change City</button>
+        </div> 
+        <!-- card over lay ends here -->
+      </div>
+    </div>
+  </div>
+  <!-- card ends -->
+

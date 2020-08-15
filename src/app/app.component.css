@@ -1,0 +1,35 @@
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#btn{
+  background-color: goldenrod;
+  border-bottom-style: solid;
+  margin-left: 10px;
+  margin-top: 42px
+}
+
+#editbtn{
+  float: right;
+  background-color: transparent;
+  color: gold;
+  border:none;
+ 
+}
+
+#divWeatherMain{
+    display: block;
+    border-radius: 10px;
+    width: 200px;
+    height: 220px;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
+    color: white;;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.weatherWidgetRow{
+    display:block;
+    margin:0 auto;
+    width: fit-content;
+}
+
